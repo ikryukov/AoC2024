@@ -42,30 +42,28 @@ fn main() -> Result<()> {
         }
         for i in 0..grid.len() {
             for j in 0..grid[i].len() {
-                if grid[i][j] == 'X' {
-                    for dir in 0..8 {
-                        let mut ok = true;
-                        for (idx, b) in "XMAS".chars().enumerate() {
-                            let dx: Vec<i32> = vec![-1, -1, -1, 0, 1, 1, 1, 0];
-                            let dy: Vec<i32> = vec![-1, 0, 1, 1, 1, 0, -1, -1];
+                for dir in 0..8 {
+                    let mut ok = true;
+                    for (idx, b) in "XMAS".chars().enumerate() {
+                        let dx: Vec<i32> = vec![-1, -1, -1, 0, 1, 1, 1, 0];
+                        let dy: Vec<i32> = vec![-1, 0, 1, 1, 1, 0, -1, -1];
 
-                            let nx: i32 = i as i32 + dx[dir] * idx as i32;
-                            let ny: i32 = j as i32 + dy[dir] * idx as i32;
+                        let nx: i32 = i as i32 + dx[dir] * idx as i32;
+                        let ny: i32 = j as i32 + dy[dir] * idx as i32;
 
-                            if nx >= 0
-                                && ny >= 0
-                                && nx < grid.len() as i32
-                                && ny < grid[0].len() as i32
-                                && grid[nx as usize][ny as usize] == b
-                            {
-                            } else {
-                                ok = false;
-                                break;
-                            }
+                        if nx >= 0
+                            && ny >= 0
+                            && nx < grid.len() as i32
+                            && ny < grid[0].len() as i32
+                            && grid[nx as usize][ny as usize] == b
+                        {
+                        } else {
+                            ok = false;
+                            break;
                         }
-                        if ok {
-                            answer += 1;
-                        }
+                    }
+                    if ok {
+                        answer += 1;
                     }
                 }
             }
