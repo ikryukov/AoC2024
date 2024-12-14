@@ -2,14 +2,10 @@ use adv_code_2024::*;
 use anyhow::*;
 use code_timing_macros::time_snippet;
 use const_format::concatcp;
-use core::num;
-use ndarray::{array, Array2};
-use ndarray_linalg::Solve;
 use regex::Regex;
 use std::collections::{HashMap, HashSet, VecDeque};
-use std::fs::{read, File};
+use std::fs::File;
 use std::io::{BufRead, BufReader};
-use std::str::FromStr;
 
 const DAY: &str = "14"; // TODO: Fill the day
 const INPUT_FILE: &str = concatcp!("input/", DAY, ".txt");
@@ -59,8 +55,6 @@ fn main() -> Result<()> {
                 let width = 101;
                 let height = 103;
 
-                for step in 0..100000 {}
-
                 let mut pos_x = (px + 100 * vx) % width;
                 if pos_x < 0 {
                     pos_x = width + pos_x;
@@ -107,11 +101,6 @@ fn main() -> Result<()> {
     fn part2<R: BufRead>(reader: R) -> Result<usize> {
         // TODO: Solve Part 1 of the puzzle
         let mut answer = 0;
-
-        let mut u_l = 0;
-        let mut u_r = 0;
-        let mut b_l = 0;
-        let mut b_r = 0;
 
         let mut robots_pos: Vec<(i32, i32)> = vec![];
         let mut robots_vel: Vec<(i32, i32)> = vec![];
@@ -184,7 +173,7 @@ fn main() -> Result<()> {
                 }
             }
         }
-
+        answer = best;
         Ok(answer)
     }
 
