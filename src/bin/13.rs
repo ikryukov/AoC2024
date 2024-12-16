@@ -3,8 +3,6 @@ use anyhow::*;
 use code_timing_macros::time_snippet;
 use const_format::concatcp;
 use core::num;
-use ndarray::{array, Array2};
-use ndarray_linalg::Solve;
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::fs::{read, File};
 use std::io::{BufRead, BufReader};
